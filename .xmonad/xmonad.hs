@@ -136,7 +136,7 @@ myFocusFollowsMouse = True
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 myTerminal = "urxvt"
-myTerminal2 = "termite"
+myTerminal2 = "urxvt"
 myShell = "zsh"
 emacsn = "emacsn"
 
@@ -309,30 +309,30 @@ data TopicItem = TI { topicName :: Topic
 
 myTopics :: [TopicItem]
 myTopics = [ TI "main" "" (return ())
-           -- ,  TI "mail" "" (spawnInTopicDir "emacsn -e")
-           , TI "Org" "org" (spawnInTopicDir "emacsn -m ORG")
+            ,  TI "mail" "" (spawnInTopicDir "emacsn -e")
+ --          , TI "Org" "org" (spawnInTopicDir "emacsn -m ORG")
            -- , TI "Web" "" (spawnInTopicDir "vivaldi-stable")
            , TI "Web" "" (spawnInTopicDir "emacsn -cws common -b duckduckgo.com" >>
                           spawnInTopicDir "discord")
 --           , TI "Yeti" "play/Yeti/yeti-stack" (spawnInTopicDir "emacsn -m Yeti")
            , TI "Code" "play" (spawnInTopicDir "emacsn -m Code")
-           , TI "QMK" "play/qmk_firmware/users/ericgebhart" (spawnInTopicDir "emacsn -m README.md")
-           , TI "Elisp" "play/emacs-setup/elisp" (spawnInTopicDir "emacsn -m Elisp")
-           , TI "Arch-Setup" "Arch-Setup" (spawnInTopicDir "emacsn -m Arch-Setup")
-           , TI "XMonad" "play/xmonad-setup/.xmonad" (spawnInTopicDir "emacsn -m Xmonad xmonad.hs") -- lib/*/*.hs
-           , TI "SPR" "play/Simple_Process_Repl" (spawnInTopicDir "emacsn -m SPR README.md")
+--           , TI "QMK" "play/qmk_firmware/users/ericgebhart" (spawnInTopicDir "emacsn -m README.md")
+--           , TI "Elisp" "play/emacs-setup/elisp" (spawnInTopicDir "emacsn -m Elisp")
+--           , TI "Arch-Setup" "Arch-Setup" (spawnInTopicDir "emacsn -m Arch-Setup")
+--           , TI "XMonad" "play/xmonad-setup/.xmonad" (spawnInTopicDir "emacsn -m Xmonad xmonad.hs") -- lib/*/*.hs
+ --         , TI "SPR" "play/Simple_Process_Repl" (spawnInTopicDir "emacsn -m SPR README.md")
            --, TI "RobotGirl" "play/robotgirl/" (spawnInTopicDir "emacsn -m RobotGirl")
-           , TI "Plysp" "play/plysp" (spawnInTopicDir "emacsn -m Plysp")
+  --        , TI "Plysp" "play/plysp" (spawnInTopicDir "emacsn -m Plysp")
 
            -- , TI "PBR" "play/Particle_Board_REPL" (spawnInTopicDir "emacsn -m PBR")
 
-           , TI "eg.com" "play/ericgebhart.github.io" (spawnInTopicDir "emacsn -m eg.com")
-           , TI "tb.com" "play/tangobreath.github.io" (spawnInTopicDir "emacsn -m tb.com")
-           , TI "Closh" "play/closh" (spawnInTopicDir "emacsn -m closh")
+   --       , TI "eg.com" "play/ericgebhart.github.io" (spawnInTopicDir "emacsn -m eg.com")
+    --      , TI "tb.com" "play/tangobreath.github.io" (spawnInTopicDir "emacsn -m tb.com")
+     --     , TI "Closh" "play/closh" (spawnInTopicDir "emacsn -m closh")
            -- , TI "Mal" "play/mal" (spawnInTopicDir "emacsn -m mal")
            -- , TI "bgc-ui" "play/bgc-ui" (spawnInTopicDir "emacsn -m bgc-ui")
            -- , TI "emacs-single" "play/emacs-single" (spawnInTopicDir "emacsn -m emacs-single")
-           , TI "Xournal" "Xournal" (spawnInTopicDir "xournal")
+--          , TI "Xournal" "Xournal" (spawnInTopicDir "xournal")
            , TI "Comm" "" (spawnInTopicDir "telegram-desktop" >>
                             spawnInTopicDir "emacsn -cews mail")
 
@@ -343,11 +343,11 @@ myTopics = [ TI "main" "" (return ())
            , TI "French" "Language/Française" (spawnInTopicDir "termite -T Française" >>
                                                spawnInTopicDir "dolphin --select ~/Language/Française" >>
                                                spawn "anki")
-           , TI "3D" "Projects/3d" (spawnInTopicDir "repetierHost" >>
+         , TI "3D" "Projects/3d" (spawnInTopicDir "repetierHost" >>
                            spawnInTopicDir "openscad" >>
                            spawnInTopicDir "emacsn -m 3D")
            , TI "Music"  "Music" (spawn "mediacenter26")
-           , TI "Movies" "Movies" (spawn "vlc")
+--           , TI "Movies" "Movies" (spawn "vlc")
              -- , TI "calendar" "" (spawn "vivaldi --app='http://calendar.google.com'")
            , TI "Krita" "Drawings" (spawnInTopicDir "krita")
            , TI "Inkscape" "Drawings" (spawnInTopicDir "inkscape")
@@ -512,11 +512,11 @@ flexFloatBSP dx dy = customFloating (flexScratchpadSize dx dy)
 scratchpads =
   [ NS "conky"   spawnConky findConky manageConky
   , NS "pavuControl"   spawnPavu findPavu managePavu
-  , NS "term"  (myTerminal2 ++ " -t term") (title =? "term") (flexFloatBSP (1/20) (1/20))
-  , NS "term1" (myTerminal2 ++ " -t term1") (title =? "term1") (flexFloatBSP (2/20) (2/20))
-  , NS "term2" (myTerminal2 ++ " -t term2") (title =? "term2") (flexFloatBSP (3/20) (3/20))
-  , NS "term3" (myTerminal2 ++ " -t term3") (title =? "term3") (flexFloatBSP (4/20) (4/20))
-  , NS "term4" (myTerminal2 ++ " -t term4") (title =? "term4") (flexFloatBSP (6/20) (4/20))
+  , NS "term"  (myTerminal2 ++ " -title term") (title =? "term") (flexFloatBSP (1/20) (1/20))
+  , NS "term1" (myTerminal2 ++ " -title term1") (title =? "term1") (flexFloatBSP (2/20) (2/20))
+  , NS "term2" (myTerminal2 ++ " -title term2") (title =? "term2") (flexFloatBSP (3/20) (3/20))
+  , NS "term3" (myTerminal2 ++ " -title term3") (title =? "term3") (flexFloatBSP (4/20) (4/20))
+  , NS "term4" (myTerminal2 ++ " -title term4") (title =? "term4") (flexFloatBSP (6/20) (4/20))
   , NS "ghci"  (myTerminal2 ++ " -e ghci") (title =? "ghci") (flexFloatBSP (6/20) (1/10))
   --, NS "sync"  (myTerminal ++ " -e sy") (title =? "sy") (flexFloatSP (1/10) (2/3))
   , NS "top"   (myTerminal2 ++ " -e htop") (title =? "htop") (flexFloatSSP (1/4) (1/4))
@@ -1068,7 +1068,7 @@ toSubmap c name m = do
 --
 -- Note: Formatting is important for script.  The comment becomes the menu text.
 focusKeymap = -- Focus
-  [ ("v",       focus "vivaldi") -- Focus Vivaldi
+  [ ("v",       focus "qutebrowser") -- Focus Vivaldi
   , ("e",       focus "emacs") -- Focuse Emacs
   , ("m",       windows W.focusMaster) -- Focus Master
   , ("s",       windows W.swapMaster) -- Swap Master

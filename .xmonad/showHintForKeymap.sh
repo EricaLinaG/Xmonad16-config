@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 ##########################################################
 ## Look through ~/.xmonad/xmonad.hs for the given key submap
 ## in EZ-Config format.
@@ -9,7 +9,7 @@
 ##########################################################
 KEYMAP=$1
 # make FW bigger if the columns don't fit on your screen
-FW=350
+FW=250
 LH=$9
 X=$2
 W=$4
